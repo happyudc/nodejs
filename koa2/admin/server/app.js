@@ -42,7 +42,7 @@ app.use(koaStatic(
 ));
 
 // 配置服务端模板引擎中间件
-app.use(views(path.join(__dirname, '.views'),{
+app.use(views(path.join(__dirname, 'views'),{
     extension: 'ejs'
 }));
 

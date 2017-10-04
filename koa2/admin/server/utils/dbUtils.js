@@ -27,7 +27,7 @@ let query = function (sql, params) {
             if(err) {
                 resolve(err)
             } else {
-                connection.query(sql, params, (err, rows) => {
+                let query = connection.query(sql, params, (err, rows) => {
                     if(err) {
                         reject(err)
                     } else {
@@ -35,6 +35,7 @@ let query = function (sql, params) {
                     }
                     connection.release()
                 })
+                console.log(query.sql); // 打印sql
             }
         })
     })
@@ -76,12 +77,12 @@ let findDataByPage = function (tables, columns, start, end) {
 /**
  * 添加数据
  * @param table
- * @param values
+ * @param values {}
  * @returns {Promise}
  */
 let insertData = function (table, values) {
-    let _sql = "insert into ? values ??";
-    return query(_sql, [ table, values ])
+    let _sql = "insert into user_info SET ?"; // 这种方式(SET ?)可以拿到插入的主键id
+    return query(_sql, values)
 };
 
 /**

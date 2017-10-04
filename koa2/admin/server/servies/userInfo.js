@@ -25,7 +25,7 @@ const user = {
     async getExistUser(formData) {
         let resultData = await userModel.getExistUser({
             'email': formData.email,
-            'name': formData.name
+            'name': formData.userName
         });
         return resultData
     },
@@ -38,7 +38,7 @@ const user = {
     async signIn(formData) {
         let resultData = await userModel.getUserByNameAndPassword({
             "password": formData.password,
-            "name": formData.name
+            "name": formData.userName
         });
         return resultData
     },

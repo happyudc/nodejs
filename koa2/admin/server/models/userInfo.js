@@ -31,13 +31,15 @@ const user = {
     },
 
     /**
-     * 根据米啊嘛和用户吗查询用户
+     * 根据用户名和密码查询用户
      * @param params
      * @returns {Promise}
      */
     async getUserByNameAndPassword(params) {
         let _sql = `select * from user_info where password="${params.password}" and name="${params.name}"`;
+        console.log(_sql)
         let result = await dbUtils.query(_sql);
+        console.log(result)
         if (Array.isArray(result) && result.length > 0) {
             result = result[0];
         } else {
